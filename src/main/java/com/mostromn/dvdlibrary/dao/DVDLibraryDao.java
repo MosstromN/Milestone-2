@@ -49,4 +49,7 @@ public interface DVDLibraryDao {
     DVD editDVD(String Title, DVD dvd)
     throws DVDLibraryDaoException;
 
+    
+    boolean doesEditDVDExist (String Title)
+    throws DVDLibraryDaoException;
 }

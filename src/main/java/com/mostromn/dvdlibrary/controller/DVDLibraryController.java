@@ -12,6 +12,7 @@ import com.mostromn.dvdlibrary.dto.DVD;
 import com.mostromn.dvdlibrary.ui.DVDLibraryView;
 import com.mostromn.dvdlibrary.ui.UserIO;
 import com.mostromn.dvdlibrary.ui.UserIOConsoleImpl;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 /**
@@ -23,8 +24,8 @@ public class DVDLibraryController {
     private UserIO io = new UserIOConsoleImpl();
     private DVDLibraryView view;
     private DVDLibraryDao dao;
-    
-    public void run() {
+    //added throws clause !!!!
+    public void run() throws FileNotFoundException {
         boolean keepGoing = true;
         int MenuSelection = 0;
         
@@ -92,12 +93,18 @@ public class DVDLibraryController {
     view.displayRemoveResult(removeDVD);
     }
     // New Edit DVD - edit menu with as well
-    private void editDVD() throws DVDLibraryDaoException{
+    private void editDVD() throws DVDLibraryDaoException, FileNotFoundException{
     view.displayEditDVDBanner();
     String Title = view.getTitleChoice();
-    DVD updatedDVD = view.editDVD(Title);
+    //How to call on the file impl class??
+    if (dao.doesEditDVDExist(Title)){
+       DVD updatedDVD = view.editDVD(Title);
     DVD editDVD = dao.editDVD(Title, updatedDVD);
-    view.displayEditResult(editDVD);
+    view.displayEditResult(); 
+    }
+    else{
+    io.print("DVD doesn't exist");
+    }
     }
     
     private void unknownCommand() {

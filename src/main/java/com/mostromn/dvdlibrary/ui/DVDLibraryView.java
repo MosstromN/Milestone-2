@@ -95,9 +95,7 @@ public DVD editDVD (String Title) {
     String studio = io.readString("Please enter new Studio");
     String userRating = io.readString("Please enter new User Rating");
     String title = Title;
-    //fix this!!!!
-    //---l---l
-    //---v---v
+    
     DVD currentDVD = new DVD(title);  
     currentDVD.setMPAARating(mPAARating);
     currentDVD.setReleaseDate(releaseDate);
@@ -126,16 +124,17 @@ public void displayRemoveResult(DVD dvdRecord) {
 public void displayEditDVDBanner () {
     io.print("=== Edit DVD ===");
 }
+        
+public void doesEditDVDExist () {
 
-public void displayEditResult (DVD dvdRecord){
-    if (dvdRecord != null){
-        io.print("DVD succesfully Edited");
-    }else{
-        io.print("No such DVD");       
-    }
-    io.readString("Please hit enter to continue.");
+    
 }
 
+
+public void displayEditResult (){
+        io.print("DVD succesfully Edited");
+        io.readString("Please hit enter to continue.");
+    }
 public void displayExitBanner() {
     io.print("Good Bye!!!");
 }

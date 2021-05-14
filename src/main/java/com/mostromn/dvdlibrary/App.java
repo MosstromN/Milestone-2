@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,6 +12,7 @@ import com.mostromn.dvdlibrary.dao.DVDLibraryDaoFileImpl;
 import com.mostromn.dvdlibrary.ui.DVDLibraryView;
 import com.mostromn.dvdlibrary.ui.UserIO;
 import com.mostromn.dvdlibrary.ui.UserIOConsoleImpl;
+import java.io.FileNotFoundException;
 
 /**
  *
@@ -18,7 +20,7 @@ import com.mostromn.dvdlibrary.ui.UserIOConsoleImpl;
  */
 public class App {
   
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
     UserIO myIo = new UserIOConsoleImpl();
     DVDLibraryView myView = new DVDLibraryView(myIo);
     DVDLibraryDao myDao = new DVDLibraryDaoFileImpl();
